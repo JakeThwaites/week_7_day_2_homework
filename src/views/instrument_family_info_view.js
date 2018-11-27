@@ -13,15 +13,31 @@ InstrumentInfoView.prototype.bindEvents = function () {
 
 InstrumentInfoView.prototype.render = function (instrumentFamily) {
 
-  console.log(instrumentFamily);
   const instrumentFamilyName = document.createElement('h2');
   instrumentFamilyName.textContent = instrumentFamily.name;
+
   const infoParagraph = document.createElement('p');
   infoParagraph.textContent = instrumentFamily.description;
-  // this.container.innerHTML = "";
+
+  const instrumentList = document.createElement('ul');
+  const familyInstruments = this.createInstrumentList(instrumentFamily.instruments);
+
+  this.container.innerHTML = "";
   this.container.appendChild(instrumentFamilyName);
   this.container.appendChild(infoParagraph);
+  this.container.appendChild(familyInstruments);
 };
 
+InstrumentInfoView.prototype.createInstrumentList = function (family) {
+
+  const list = document.createElement('ul');
+
+  family.forEach((instrument) => {
+    const listItem = document.createElement('li');
+    listItem.textContent = instrument;
+    list.appendChild(listItem);
+  })
+  return list;
+};
 
 module.exports = InstrumentInfoView;
