@@ -39,9 +39,9 @@ InstrumentFamilies.prototype.bindEvents = function () {
   });
 };
 
-InstrumentFamilies.publishInstrumentInfo. = function (instrumentIndex) {
+InstrumentFamilies.prototype.publishInstrumentInfo = function (instrumentIndex) {
   const selectedInstrument = this.instrumentFamilies[instrumentIndex];
-  PubSub.publish('Instruments:selected-family-info');
+  PubSub.publish('Instruments:selected-family-info', selectedInstrument);
 };
 
 module.exports = InstrumentFamilies;

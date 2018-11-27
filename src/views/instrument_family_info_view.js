@@ -12,10 +12,16 @@ InstrumentInfoView.prototype.bindEvents = function () {
 };
 
 InstrumentInfoView.prototype.render = function (instrumentFamily) {
+
+  console.log(instrumentFamily);
+  const instrumentFamilyName = document.createElement('h2');
+  instrumentFamilyName.textContent = instrumentFamily.name;
   const infoParagraph = document.createElement('p');
-  infoParagraph.textContent = instrumentFamily.desription;
-  this.container.innerHTML = '';
+  infoParagraph.textContent = instrumentFamily.description;
+  // this.container.innerHTML = "";
+  this.container.appendChild(instrumentFamilyName);
   this.container.appendChild(infoParagraph);
 };
+
 
 module.exports = InstrumentInfoView;
