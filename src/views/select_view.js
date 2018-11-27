@@ -9,6 +9,11 @@ SelectView.prototype.bindEvents = function () {
     const allInstruments = event.detail;
     this.populate(allInstruments);
   });
+
+  this.element.addEventListener('change', (event) => {
+    const selectedIndex = event.target.value;
+    PubSub.publish('SelectView:change', selectedIndex);
+  });
 };
 
 
